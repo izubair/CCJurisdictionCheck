@@ -81,7 +81,16 @@ function initMap() {
 			{
 				alert("This location is not within Clark County Jurisdiction");
 			}
-		}); 	
+		}); 
+
+		$( "#BtnGetAddress" ).click(function( event ) {
+				GetAddress();
+			});
+		
+		$( "#BtnGetParcel" ).click(function( event ) {
+				GetParcel();
+			});
+			
 			
 }
 			
@@ -546,6 +555,16 @@ function GetParcel()
 	geocodeAddress(address, resultObj);
 	
 }
+
+
+				$( "#BtnGetAddress" ).click(function( event ) {
+					GetAddress();
+				});
+			
+				$( "#BtnGetParcel" ).click(function( event ) {
+					GetParcel();
+				});
+			
 
 
 
