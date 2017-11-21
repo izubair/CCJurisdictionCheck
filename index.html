@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Tester Web Page</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<!--
+	<script src="jquery-3.1.1.js"></script>
+	-->
+  <script src="WSFuncCalls.js"></script>
+	
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+		
+	<style>
+		html { height: 100%; width: 100% }
+		body { height: 100%; width: 100% }
+		#map-container { height: 80% }
+		
+		.column {
+    float: left;
+		}
+
+		.left 
+		{
+				width: 20%;
+		}		
+		.right {
+				width: 80%;
+		}		
+
+
+	/* Style the tab */
+div.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+div.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+		width: 50%
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+div.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+#ResultText, #Result2Text {
+    width: 235px;
+    height: 200px;
+    border: 1px solid #ddd;
+		padding: 5px;
+		background-color: Lavender;
+}
+
+	</style>
+    
+  </head>
+
+  <body>
+	<div class="page-header text-center">
+		<h1>GIS Utility Web Page</h1>
+		<p>Enter parcel number to get address or address to get parcel number. Click (Drop pin) on map to get parcel number</p> 
+	</div>
+	
+	
+<div class="container">	
+  <div class="row">
+    <div class="col-sm-3">
+			<div class="tab">
+				<button class="tablinks" onclick="openTab(event, 'ParcelToAddress')" id="defaultOpen">Parcel To Address</button>
+				<button class="tablinks" onclick="openTab(event, 'AddressToParcel')" id="tabAddressToParcel">Address To Parcel</button>				
+			</div>
+			<div id="ParcelToAddress" class="tabcontent">
+				<h4>Enter parcel number and click Get Address button</h4>
+					<label>Parcel No:</label>
+					<br/>
+					<input id="ParcelText" size="30">		
+					<br/>	
+					<br/>
+					<button id="BtnGetAddress">Get Address</button>
+					<br/>		
+					<br/>
+					<label><b>Results:</b></label>
+					<br/>
+					<!--
+					<textarea rows="8" cols="50" id="ResultText"> </textarea>
+					-->
+					<div id="ResultText" contenteditable="false"></div>
+									
+			</div>
+			<div id="AddressToParcel" class="tabcontent">
+				<h4>Enter address and click on Get Parcel button or click on map to get Parcel for location</h4>
+					<label>Address:</label>
+					<br/>
+					
+					<input id="InputAddressText" size="30">				
+					<br/>	
+					<br/>					
+					<button id="BtnGetParcel">Get Parcel</button>					
+					<br/>	
+					<br/>
+					<label><b>Results:</b></label>
+					<br/>
+					<!--
+					<textarea rows="8" cols="50" id="Result2Text"> </textarea>
+					-->
+					
+					<div id="Result2Text" contenteditable="false"></div>
+									
+			</div>
+
+    </div>
+    <div class="col-sm-9"> 
+				<!--Card-->
+        <div class="card card-cascade narrower">
+
+            <!--Card image-->
+            <div class="view gradient-card-header blue-gradient">
+                
+            </div>
+            <!--/Card image-->
+
+            <!--Card content-->
+            <div class="card-body text-center">
+
+                <!--Google map-->
+                <div id="map-container" class="z-depth-1" style="height: 600px"></div>
+
+            </div>
+            <!--/.Card content-->
+
+        </div>
+        <!--/.Card-->
+    </div>
+		<!--
+    <div class="col-sm-4">
+      <h3>Column 3</h3> 
+      <p>Lorem ipsum dolor..</p>
+      <p>Ut enim ad..</p>
+    </div>
+		-->
+  </div>
+</div>
+				
+			<script>
+				$( "#BtnGetAddress" ).click(function( event ) {
+					GetAddress();
+				});
+			</script>
+			<script>
+				$( "#BtnGetParcel" ).click(function( event ) {
+					GetParcel();
+				});
+			</script>
+			
+			<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyD9HKIXx1xm4_VIY-_oXY5EhYXZjHhnkz8"></script>
+			<script>
+				initMap(); 
+      </script>
+   </body>
+</html>
